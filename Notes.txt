@@ -1,0 +1,112 @@
+@Parameters:
+============
+Selenium supports Cross Browser Testing. This can be achieved by integrating the Selenium with TESTNG framework.  It means we can test the webapplication on multiple browsers such as FF,CH,IE
+
+
+Objective:Writing a class that should run on multiple browsers.
+
+Annotation required to access the parameter values from xml to the java program
+is @Parameters
+
+    public class ParameterizedTests
+    {
+       @Parameters({"browsertype","url"})
+       @BeforeTest//Precondition Configuration annotation
+       public void invokebrowser(String browserType,String url)
+       {  
+		WebDriver driver;
+		if(browserType.equals("FF")
+		{
+        			driver =new FirefoxDriver();
+		}
+		else if(browserType.equals("IE")
+               	{
+			 
+	                	driver = new InternetExplorerDriver();
+                	}
+		else
+               	 {
+                   	 
+                   		 driver = new ChromeDriver();
+               	 } 
+              
+		driver.get(url);
+
+	}
+      
+        @Test
+        public void verifyTitle()
+        {
+
+	   Assert.assertEquals(driver.getTitle(),"Google");		
+
+         }
+  }
+
+testng.xml
+=============
+
+  <suite name="GoogleSuite" >
+	<test name="Googletest">
+	<parameter name="browsertype" value="CH" />
+	<parameter name="url" value="http://www.google.com" />
+	<classes>
+		<class name="testng.ParameterizedTests" />
+       </classes>
+       </test>
+
+        <test name="Googletest">
+	<parameter name="browsertype" value="FF" />
+	<parameter name="url" value="http://www.google.com" />
+	<classes>
+		<class name="testng.ParameterizedTests" />
+       </classes>
+       </test>
+       <test name="Googletest">
+	<parameter name="browsertype" value="IE" />
+	<parameter name="url" value="http://www.google.com" />
+	<classes>
+		<class name="testng.ParameterizedTests" />
+       </classes>
+       </test>
+  </suite>
+
+
+Scenario :2
+===========
+2 Different @Test methods available in a java class
+
+
+@Parameters({"m1"})
+@Test
+public void m1()
+{
+
+}
+@Parameters({"m2"})
+@Test
+public void m2()
+{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
