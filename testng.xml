@@ -1,0 +1,25 @@
+ 
+  <suite name="GoogleSuite" >
+	<test name="Googletest">
+	<parameter name="browsertype" value="CH" />
+	<parameter name="url" value="http://www.google.com" />
+	<classes>
+		<class name="testng.ParameterizedTests" />
+       </classes>
+       </test>
+
+        <test name="Googletest">
+	<parameter name="browsertype" value="FF" />
+	<parameter name="url" value="http://www.google.com" />
+	<classes>
+		<class name="testng.ParameterizedTests" />
+       </classes>
+       </test>
+       <test name="Googletest">
+	<parameter name="browsertype" value="IE" />
+	<parameter name="url" value="http://www.google.com" />
+	<classes>
+		<class name="testng.ParameterizedTests" />
+       </classes>
+       </test>
+  </suite>
